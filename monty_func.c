@@ -59,7 +59,6 @@ instruct_func get_op_func(char *str)
 		{"pall", _pall},
 		{"pint", _pint},
 		{"pop", _pop},
-
 		{"swap", _swap},
 		{"add", _add},
 		{"nop", _nop},
