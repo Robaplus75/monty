@@ -7,8 +7,8 @@
 void pushf(stack_t **filestack,
 __attribute__ ((unused))unsigned int line_number)
 {
-	(void)line_number;
 	stack_t *fileop;
+	(void)line_number;
 
 /*allocate space for fileop*/
 	fileop = malloc(sizeof(stack_t));
