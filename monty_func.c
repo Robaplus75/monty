@@ -23,7 +23,7 @@ void handlefile(char *textfile, stack_t **memstack)
 	while ((l = getline(&var_global.buffer, &j, var_global.file)) != -1)
 	{
 /*gets the command*/
-		command = parsline(var_global.buffer, memstack, line_size);
+		command = pline(var_global.buffer, memstack, line_size);
 		if (command == NULL || command[0] == '#')
 		{
 			line_size++;
@@ -57,7 +57,7 @@ instruct_func opfunc(char *strr)
 {
 	int num = 0;
 /*the command chekcer*/
-	instruction_t instruct[] = {
+	instruction_t instarr[] = {
 		{"push", pushf},
 		{"pall", pallf},
 		{"pint", pintfunc},
@@ -68,12 +68,12 @@ instruct_func opfunc(char *strr)
 		{NULL, NULL},
 	};
 /*checks for errors or if its null*/
-	while (instruct[num].f != NULL && strcmp(instruct[num].opcode, strr) != 0)
+	while (strcmp(instarr[num].opcode, strr) != 0 && instarr[num].f != NULL)
 	{
 		num++;
 	}
 
-	return (instruct[num].f);
+	return (instarr[num].f);
 }
 
 /**
@@ -102,34 +102,33 @@ int isnumber(char *stringg)
 }
 
 /**
- * parsline - parses a line for an opcode and arguments
- * @line: the line to be parsed
- * @stack: pointer to the head of the stack
- * @line_number: the current line number
- * Return: returns the opcode or null on failure
+ * pline - for parsing th eline
+ * @line: the line that is going to be parsed
+ * @stack: pointer to the head of stack
+ * @numline: line number
+ * Return: returns opcode
  */
-char *parsline(char *line, stack_t **stack, unsigned int line_number)
+char *pline(char *line, stack_t **stack, unsigned int numline)
 {
-	char *op_code, *push, *arg;
+	char *opcod, *args;
 	(void)stack;
 
-	push = "push";
-	op_code = strtok(line, "\n ");
-	if (op_code == NULL)
+	opcod = strtok(line, "\n ");
+	if (opcod == NULL)
 		return (NULL);
 
-	if (strcmp(op_code, push) == 0)
+	if (strcmp(opcod, "push") == 0)
 	{
-		arg = strtok(NULL, "\n ");
-		if (isnumber(arg) == 1 && arg != NULL)
+		args = strtok(NULL, "\n ");
+		if (isnumber(args) == 1 && args != NULL)
 		{
-			var_global.push_arg = atoi(arg);
+			var_global.push_arg = atoi(args);
 		}
 		else
 		{
-			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			fprintf(stderr, "L%d: usage: push integer\n", numline);
 			exit(EXIT_FAILURE);
 		}
 	}
-	return (op_code);
+	return (opcod);
 }

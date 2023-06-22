@@ -56,7 +56,7 @@ typedef struct global_variable
 extern global_var var_global;
 
 void handlefile(char *textfile, stack_t **memstack);
-char *parsline(char *line, stack_t **stack, unsigned int line_number);
+char *pline(char *line, stack_t **stack, unsigned int numline);
 typedef void (*instruct_func)(stack_t **stack, unsigned int line_number);
 instruct_func opfunc(char *strr);
 
