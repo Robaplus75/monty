@@ -6,22 +6,22 @@
  */
 void pushf(stack_t **filestack, __attribute__ ((unused))unsigned int line_number)
 {
-	stack_t *top;
+	stack_t *fileop;
 	(void)line_number;
 
-	top = malloc(sizeof(stack_t));
-	if (top == NULL)
+	fileop = malloc(sizeof(stack_t));
+	if (fileop == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 
-	top->n = var_global.push_arg;
-	top->next = *filestack;
-	top->prev = NULL;
+	fileop->n = var_global.push_arg;
+	fileop->next = *filestack;
+	fileop->prev = NULL;
 	if (*filestack != NULL)
-		(*filestack)->prev = top;
-	*filestack = top;
+		(*filestack)->prev = fileop;
+	*filestack = fileop;
 }
 
 /**
