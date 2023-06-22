@@ -94,7 +94,6 @@ int isnumber(char *stringg)
 			num++;
 			continue;
 		}
-/*ths is digit function initiated*/
 		if (!isdigit(stringg[num]))
 			return (0);
 		num++;
@@ -113,12 +112,11 @@ char *pline(char *line, stack_t **stack, unsigned int numline)
 {
 	char *opcod, *args;
 	(void)stack;
-/*breaks down opcod*/
+
 	opcod = strtok(line, "\n ");
 	if (opcod == NULL)
 		return (NULL);
 
-/*checks if opcod and push r z same*/
 	if (strcmp(opcod, "push") == 0)
 	{
 		args = strtok(NULL, "\n ");

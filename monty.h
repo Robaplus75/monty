@@ -61,10 +61,10 @@ typedef void (*instruct_func)(stack_t **stack, unsigned int line_number);
 instruct_func opfunc(char *strr);
 
 /*Fuxntions Monty*/
-void pallf(stack_t **tack, unsigned int line_number);
-void pushf(stack_t **stak, unsigned int line_number);
-void pintfunc(stack_t **tack, unsigned int line_number);
-void popfunc(stack_t **tack, unsigned int line_number);
+void pallf(stack_t **stack, unsigned int line_number);
+void pushf(stack_t **stack, unsigned int line_number);
+void pintfunc(stack_t **stack, unsigned int line_number);
+void popfunc(stack_t **stack, unsigned int line_number);
 void swapfunc(stack_t **stack, unsigned int line_number);
 void nopfunc(stack_t **stack, unsigned int line_number);
 
@@ -72,5 +72,5 @@ void nopfunc(stack_t **stack, unsigned int line_number);
 void addfunc(stack_t **stack, unsigned int line_number);
 
 /*Utility functions*/
-void listfree(stack_t *tophead);
+void listfree(stack_t *head);
 #endif
