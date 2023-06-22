@@ -82,11 +82,11 @@ void _pop(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * free_dlistint - free a list
+ * listfree - free a list
  * @head: pointer to first node
  *
  */
-void free_dlistint(stack_t *head)
+void listfree(stack_t *head)
 {
 	stack_t *tmp;
 
