@@ -77,27 +77,26 @@ instruct_func opfunc(char *strr)
 }
 
 /**
- * checknum - checks if a string is a number
- * @str: string being passed
+ * isnumber - checks if a string is a number
+ * @stringg: string being passed
  * Return: returns 1 if string is a number, 0 otherwise
  */
-int checknum(char *str)
+int isnumber(char *stringg)
 {
-	unsigned int i;
+	unsigned int num = 0;
 
-	if (str == NULL)
+	if (stringg == NULL)
 		return (0);
-	i = 0;
-	while (str[i])
+	while (stringg[num])
 	{
-		if (str[0] == '-')
+		if (stringg[0] == '-')
 		{
-			i++;
+			num++;
 			continue;
 		}
-		if (!isdigit(str[i]))
+		if (!isdigit(stringg[num]))
 			return (0);
-		i++;
+		num++;
 	}
 	return (1);
 }
@@ -122,7 +121,7 @@ char *parsline(char *line, stack_t **stack, unsigned int line_number)
 	if (strcmp(op_code, push) == 0)
 	{
 		arg = strtok(NULL, "\n ");
-		if (checknum(arg) == 1 && arg != NULL)
+		if (isnumber(arg) == 1 && arg != NULL)
 		{
 			var_global.push_arg = atoi(arg);
 		}
