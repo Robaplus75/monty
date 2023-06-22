@@ -61,8 +61,8 @@ typedef void (*instruct_func)(stack_t **stack, unsigned int line_number);
 instruct_func get_op_func(char *str);
 
 /*Fuxntions Monty*/
-void pallfunc(stack_t **stack, unsigned int line_number);
-void pushfunc(stack_t **stack, unsigned int line_number);
+void pallf(stack_t **stack, unsigned int line_number);
+void pushf(stack_t **stack, unsigned int line_number);
 void pintfunc(stack_t **stack, unsigned int line_number);
 void popfunc(stack_t **stack, unsigned int line_number);
 void swapfunc(stack_t **stack, unsigned int line_number);

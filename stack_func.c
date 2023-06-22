@@ -1,10 +1,10 @@
 #include "monty.h"
 /**
- * pushfunc - push int to a stack
+ * pushf - push int to a stack
  * @stack: linked lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void pushfunc(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
+void pushf(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
 	stack_t *top;
 	(void)line_number;
@@ -25,11 +25,11 @@ void pushfunc(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 }
 
 /**
- * pallfunc - print all function
+ * pallf - print all function
  * @stack: pointer to linked list stack
  * @line_number: number of line opcode occurs on
  */
-void pallfunc(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
+void pallf(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
 	stack_t *runner;
 
