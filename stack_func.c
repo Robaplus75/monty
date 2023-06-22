@@ -1,102 +1,99 @@
 #include "monty.h"
 /**
- * pushf - push int data to stack
- * @stak: the list of stack
- * @line_number: num of lines
+ * pushf - push int to a stack
+ * @stack: linked lists for monty stack
+ * @line_number: number of line opcode occurs on
  */
-void pushf(stack_t **stak, __attribute__ ((unused))unsigned int line_number)
+void pushf(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
+	stack_t *top;
 	(void)line_number;
-	stack_t *stacktop;
 
-/*allocates memory for stacktop*/
-	stacktop = malloc(sizeof(stack_t));
-	if (stacktop == NULL)
+	top = malloc(sizeof(stack_t));
+	if (top == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-/*assinging values*/
-	stacktop->n = var_global.push_arg;
-	stacktop->next = *stak;
-	stacktop->prev = NULL;
-	if (*stak != NULL)
-		(*stak)->prev = stacktop;
-	*stak = stacktop;
+
+	top->n = var_global.push_arg;
+	top->next = *stack;
+	top->prev = NULL;
+	if (*stack != NULL)
+		(*stack)->prev = top;
+	*stack = top;
 }
 
 /**
- * pallf - output all funcs
- * @tack: poiter to stack
- * @line_number: number of lines
+ * pallf - print all function
+ * @stack: pointer to linked list stack
+ * @line_number: number of line opcode occurs on
  */
-void pallf(stack_t **tack, __attribute__ ((unused))unsigned int line_number)
+void pallf(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
-	stack_t *begin = *tack;
+	stack_t *runner;
 
-/*tHE PRINTING PART*/
-	while (begin != NULL)
+	runner = *stack;
+	while (runner != NULL)
 	{
-		printf("%d\n", begin->n);
-		begin = begin->next;
+		printf("%d\n", runner->n);
+		runner = runner->next;
 	}
 }
 
 /**
- * pintfunc - output the top of stack
- * @tack: pointer to stack
- * @line_number: number of lines
+ * pintfunc - print int a top of stack
+ * @stack: pointer to linked list stack
+ * @line_number: number of line opcode occurs on
  *
  */
-void pintfunc(stack_t **tack, unsigned int line_number)
+void pintfunc(stack_t **stack, unsigned int line_number)
 {
-	stack_t *begin = *tack;
+	stack_t *runner;
 
-	if (begin == NULL)
+	runner = *stack;
+	if (runner == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", begin->n);
+	printf("%d\n", runner->n);
 }
 
 /**
- * popfunc - kickout elemetn fo a list
- *@tack: pointer to stack
- *@line_number: number of lines
- *Return: none
+ * popfunc - remove element a list
+ *@stack: pointer to first node
+ *@line_number: integer
+ *Return: void
  */
-void popfunc(stack_t **tack, unsigned int line_number)
+void popfunc(stack_t **stack, unsigned int line_number)
 {
-	stack_t *nth = *tack;
+	stack_t *nodo = *stack;
 
-/*checks if tack is Null or not*/
-	if (tack == NULL || *tack == NULL)
+	if (stack == NULL || *stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-/*setting values*/
-	*tack = nth->next;
-	if (*tack != NULL)
-		(*tack)->prev = NULL;
-	free(nth);
+	*stack = nodo->next;
+	if (*stack != NULL)
+		(*stack)->prev = NULL;
+	free(nodo);
 }
 
 /**
- * listfree - frees or removes the list
- * @tophead: poitner to node
+ * listfree - free a list
+ * @head: pointer to first node
  *
  */
-void listfree(stack_t *tophead)
+void listfree(stack_t *head)
 {
-	stack_t *temporary;
+	stack_t *tmp;
 
-/*frees the tophead*/
-	while (tophead != NULL)
+	while (head != NULL)
 	{
-		temporary = tophead->next;
-		free(tophead);
-		tophead = temporary;
+		tmp = head->next;
+		free(head);
+		head = tmp;
 	}
 }
