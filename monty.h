@@ -51,14 +51,17 @@ typedef struct g_var
 } gvar;
 
 extern gvar globalvar;
-
+/*the file hander is hadnlefile function*/
 void handlefile(char *textfile, stack_t **memstack);
 char *pline(char *line, stack_t **stack, unsigned int numline);
+/*the typedef func*/
 typedef void (*instruct_func)(stack_t **stack, unsigned int line_number);
+/*inst func*/
 instruct_func opfunc(char *strr);
 
 
 void pushf(stack_t **stak, unsigned int line_number);
+/*some of useful functios*/
 void pintfunc(stack_t **tack, unsigned int line_number);
 void listfree(stack_t *tophead);
 void pallf(stack_t **tack, unsigned int line_number);

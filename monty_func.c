@@ -100,6 +100,9 @@ int isnumber(char *stringg)
 			num++;
 			continue;
 		}
+		else
+		{
+		}
 /*ths is digit function initiated*/
 		if (!isdigit(stringg[num]))
 			return (0);
