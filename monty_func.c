@@ -6,12 +6,10 @@
  */
 void read_file(char *filename, stack_t **stack)
 {
-	char *line;
+	char *command;
 	size_t i = 0;
-	int line_count = 1;
+	int line_size = 1, check, read;
 	instruct_func s;
-	int check;
-	int read;
 
 
 	var_global.file = fopen(filename, "r");
@@ -24,20 +22,20 @@ void read_file(char *filename, stack_t **stack)
 
 	while ((read = getline(&var_global.buffer, &i, var_global.file)) != -1)
 	{
-		line = parse_line(var_global.buffer, stack, line_count);
-		if (line == NULL || line[0] == '#')
+		command = parse_line(var_global.buffer, stack, line_size);
+		if (command == NULL || command[0] == '#')
 		{
-			line_count++;
+			line_size++;
 			continue;
 		}
-		s = get_op_func(line);
+		s = get_op_func(command);
 		if (s == NULL)
 		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_count, line);
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_size, command);
 			exit(EXIT_FAILURE);
 		}
-		s(stack, line_count);
-		line_count++;
+		s(stack, line_size);
+		line_size++;
 	}
 	free(var_global.buffer);
 	check = fclose(var_global.file);
