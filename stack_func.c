@@ -4,7 +4,7 @@
  * @stack: linked lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void pushf(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
+void pushf(stack_t **filestack, __attribute__ ((unused))unsigned int line_number)
 {
 	stack_t *top;
 	(void)line_number;
@@ -17,11 +17,11 @@ void pushf(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 	}
 
 	top->n = var_global.push_arg;
-	top->next = *stack;
+	top->next = *filestack;
 	top->prev = NULL;
-	if (*stack != NULL)
-		(*stack)->prev = top;
-	*stack = top;
+	if (*filestack != NULL)
+		(*filestack)->prev = top;
+	*filestack = top;
 }
 
 /**

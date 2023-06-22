@@ -113,7 +113,7 @@ char *pline(char *line, stack_t **stack, unsigned int numline)
 	opcod = strtok(line, "\n ");
 	if (opcod == NULL)
 		return (NULL);
-
+/*checks if opcode is z same as push*/
 	if (strcmp(opcod, "push") == 0)
 	{
 		args = strtok(NULL, "\n ");
