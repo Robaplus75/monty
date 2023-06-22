@@ -77,14 +77,14 @@ instruct_func opfunc(char *strr)
 }
 
 /**
- * isnumber - checks if a string is a number
- * @stringg: string being passed
- * Return: returns 1 if string is a number, 0 otherwise
+ * isnumber - is it a number?
+ * @stringg: the string to be checked
+ * Return: 1 if true, 0 else
  */
 int isnumber(char *stringg)
 {
 	unsigned int num = 0;
-
+/*checks if sth is instered or not*/
 	if (stringg == NULL)
 		return (0);
 	while (stringg[num])
