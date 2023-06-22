@@ -12,18 +12,18 @@ void handlefile(char *textfile, stack_t **memstack)
 	char *command;
 
 /*this opens the file*/
-	var_global.file = fopen(textfile, "r");
+	globalvar.file = fopen(textfile, "r");
 /*tocheck if its null*/
-	if (var_global.file == NULL)
+	if (globalvar.file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", textfile);
 		exit(EXIT_FAILURE);
 	}
 
-	while ((l = getline(&var_global.buffer, &j, var_global.file)) != -1)
+	while ((l = getline(&globalvar.buffer, &j, globalvar.file)) != -1)
 	{
 /*gets the command*/
-		command = pline(var_global.buffer, memstack, line_size);
+		command = pline(globalvar.buffer, memstack, line_size);
 		if (command == NULL || command[0] == '#')
 		{
 			line_size++;
@@ -40,9 +40,9 @@ void handlefile(char *textfile, stack_t **memstack)
 		line_size++;
 	}
 /*frees the global variable*/
-	free(var_global.buffer);
+	free(globalvar.buffer);
 /*closes the opened file*/
-	tester = fclose(var_global.file);
+	tester = fclose(globalvar.file);
 /*checks for the tester*/
 	if (tester == -1)
 		exit(-1);
@@ -121,7 +121,7 @@ char *pline(char *line, stack_t **stack, unsigned int numline)
 		args = strtok(NULL, "\n ");
 		if (isnumber(args) == 1 && args != NULL)
 		{
-			var_global.push_arg = atoi(args);
+			globalvar.push_arg = atoi(args);
 		}
 		else
 		{

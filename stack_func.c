@@ -17,7 +17,7 @@ void pushf(stack_t **stak, __attribute__ ((unused))unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 /*assinging values*/
-	stacktop->n = var_global.push_arg;
+	stacktop->n = globalvar.push_arg;
 	stacktop->next = *stak;
 	stacktop->prev = NULL;
 	if (*stak != NULL)

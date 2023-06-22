@@ -1,13 +1,12 @@
-#ifndef MONTY_H
-#define MONTY_H
+#ifndef MON_T_Y
+#define MON_Y_H
 
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
 #include <ctype.h>
 
-/*--- Struct Definitions ---*/
 extern int push_arg;
 
 /**
@@ -16,7 +15,7 @@ extern int push_arg;
  * @prev: points to the previous element of the stack (or queue)
  * @next: points to the next element of the stack (or queue)
  * Description: doubly linked list node structure
- * for stack, queues, LIFO, FIFO Holberton project
+ * for stack, queues, LIFO, FIFO
  */
 typedef struct stack_s
 {
@@ -30,7 +29,7 @@ typedef struct stack_s
  * @opcode: the opcode
  * @f: function to handle the opcode
  * Description: opcode and its function
- * for stack, queues, LIFO, FIFO Holberton project
+ * for stack, queues, LIFO, FIFO
  */
 typedef struct instruction_s
 {
@@ -39,21 +38,19 @@ typedef struct instruction_s
 } instruction_t;
 
 /**
- * struct global_variable - opcoode and its function
- * @file: the opcode
- * @push_arg: function to handle the opcode
- * @buffer: pointer to
- * Description: opcode and its function
- * for stack, queues, LIFO, FIFO Holberton project
+ * struct g_var - the opecodes and functions collection
+ * @file: its opcode
+ * @push_arg: handles the opcode
+ * @buffer: the pointer
  */
-typedef struct global_variable
+typedef struct g_var
 {
 	FILE *file;
 	int push_arg;
 	char *buffer;
-} global_var;
+} gvar;
 
-extern global_var var_global;
+extern gvar globalvar;
 
 void handlefile(char *textfile, stack_t **memstack);
 char *pline(char *line, stack_t **stack, unsigned int numline);
@@ -65,11 +62,6 @@ void pallf(stack_t **tack, unsigned int line_number);
 void pushf(stack_t **stak, unsigned int line_number);
 void pintfunc(stack_t **tack, unsigned int line_number);
 void popfunc(stack_t **tack, unsigned int line_number);
-void swapfunc(stack_t **stack, unsigned int line_number);
-void nopfunc(stack_t **stack, unsigned int line_number);
-
-/*Functions math*/
-void addfunc(stack_t **stack, unsigned int line_number);
 
 /*Utility functions*/
 void listfree(stack_t *tophead);

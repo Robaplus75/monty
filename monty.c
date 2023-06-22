@@ -1,23 +1,26 @@
 #include "monty.h"
-global_var var_global;
+gvar globalvar;
 /**
- * main - driver function for monty program
- * @argcount: int num of arguments
- * @argvv: opcode file
- * Return: 0
+ * main - the main file
+ * @argcount: number of arguments
+ * @argvv: the opcode
+ * Return: zero
  */
 int main(int argcount, char **argvv)
 {
 	stack_t *stack;
 
 	stack = NULL;
+
 	if (argcount != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
+/*reads the file and executes the appropirate command*/
 	handlefile(argvv[1], &stack);
+/*frees the stack*/
 	listfree(stack);
 	return (0);
 }
