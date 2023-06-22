@@ -17,7 +17,7 @@ int main(int argcount, char **argvv)
 		exit(EXIT_FAILURE);
 	}
 
-	read_file(argvv[1], &stack);
+	handlefile(argvv[1], &stack);
 	listfree(stack);
 	return (0);
 }

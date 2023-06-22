@@ -1,40 +1,40 @@
 #include "monty.h"
 /**
- * read_file - reads a bytecode file and runs commands
- * @filename: pathname to file
- * @stack: pointer to the top of the stack
+ * handlefile - reads a bytecode file and runs commands
+ * @textfile: pathname to file
+ * @memstack: pointer to the top of the stack
  */
-void read_file(char *filename, stack_t **stack)
+void handlefile(char *textfile, stack_t **memstack)
 {
 	char *command;
-	size_t i = 0;
-	int line_size = 1, check, read;
-	instruct_func s;
+	size_t j = 0;
+	int line_size = 1, check, l;
+	instruct_func k;
 
-
-	var_global.file = fopen(filename, "r");
+/*this opens the file*/
+	var_global.file = fopen(textfile, "r");
 
 	if (var_global.file == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", filename);
+		fprintf(stderr, "Error: Can't open file %s\n", textfile);
 		exit(EXIT_FAILURE);
 	}
 
-	while ((read = getline(&var_global.buffer, &i, var_global.file)) != -1)
+	while ((l = getline(&var_global.buffer, &j, var_global.file)) != -1)
 	{
-		command = parse_line(var_global.buffer, stack, line_size);
+		command = parse_line(var_global.buffer, memstack, line_size);
 		if (command == NULL || command[0] == '#')
 		{
 			line_size++;
 			continue;
 		}
-		s = get_op_func(command);
-		if (s == NULL)
+		k = get_op_func(command);
+		if (k == NULL)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_size, command);
 			exit(EXIT_FAILURE);
 		}
-		s(stack, line_size);
+		k(memstack, line_size);
 		line_size++;
 	}
 	free(var_global.buffer);
