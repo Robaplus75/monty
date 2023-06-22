@@ -7,8 +7,6 @@
 #include <unistd.h>
 #include <ctype.h>
 
-extern int push_arg;
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -23,6 +21,8 @@ typedef struct stack_s
 	struct stack_s *prev;
 	struct stack_s *next;
 } stack_t;
+
+extern int push_arg;
 
 /**
  * struct instruction_s - opcoode and its function
@@ -57,12 +57,11 @@ char *pline(char *line, stack_t **stack, unsigned int numline);
 typedef void (*instruct_func)(stack_t **stack, unsigned int line_number);
 instruct_func opfunc(char *strr);
 
-/*Fuxntions Monty*/
-void pallf(stack_t **tack, unsigned int line_number);
+
 void pushf(stack_t **stak, unsigned int line_number);
 void pintfunc(stack_t **tack, unsigned int line_number);
+void listfree(stack_t *tophead);
+void pallf(stack_t **tack, unsigned int line_number);
 void popfunc(stack_t **tack, unsigned int line_number);
 
-/*Utility functions*/
-void listfree(stack_t *tophead);
 #endif

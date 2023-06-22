@@ -17,6 +17,9 @@ int main(int argcount, char **argvv)
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+    else
+	{
+	}
 
 /*reads the file and executes the appropirate command*/
 	handlefile(argvv[1], &stack);

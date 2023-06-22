@@ -19,6 +19,9 @@ void handlefile(char *textfile, stack_t **memstack)
 		fprintf(stderr, "Error: Can't open file %s\n", textfile);
 		exit(EXIT_FAILURE);
 	}
+	else
+    {
+    }
 
 	while ((l = getline(&globalvar.buffer, &j, globalvar.file)) != -1)
 	{
@@ -29,12 +32,18 @@ void handlefile(char *textfile, stack_t **memstack)
 			line_size++;
 			continue;
 		}
+        else
+		{
+		}
 		k = opfunc(command);
 /*for printing error*/
 		if (k == NULL)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_size, command);
 			exit(EXIT_FAILURE);
+		}
+		else
+        {
 		}
 		k(memstack, line_size);
 		line_size++;
