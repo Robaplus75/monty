@@ -2,22 +2,22 @@
 global_var var_global;
 /**
  * main - driver function for monty program
- * @ac: int num of arguments
- * @av: opcode file
+ * @argcount: int num of arguments
+ * @argvv: opcode file
  * Return: 0
  */
-int main(int ac, char **av)
+int main(int argcount, char **argvv)
 {
 	stack_t *stack;
 
 	stack = NULL;
-	if (ac != 2)
+	if (argcount != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
-	read_file(av[1], &stack);
+	read_file(argvv[1], &stack);
     /* recordar liberar memorias */
 	free_dlistint(stack);
 	return (0);
