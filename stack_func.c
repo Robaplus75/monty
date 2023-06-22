@@ -1,10 +1,10 @@
 #include "monty.h"
 /**
- * _push - push int to a stack
+ * pushfunc - push int to a stack
  * @stack: linked lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void _push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
+void pushfunc(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
 	stack_t *top;
 	(void)line_number;
@@ -25,11 +25,11 @@ void _push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 }
 
 /**
- * _pall - print all function
+ * pallfunc - print all function
  * @stack: pointer to linked list stack
  * @line_number: number of line opcode occurs on
  */
-void _pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
+void pallfunc(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
 	stack_t *runner;
 
@@ -42,12 +42,12 @@ void _pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 }
 
 /**
- * _pint - print int a top of stack
+ * pintfunc - print int a top of stack
  * @stack: pointer to linked list stack
  * @line_number: number of line opcode occurs on
  *
  */
-void _pint(stack_t **stack, unsigned int line_number)
+void pintfunc(stack_t **stack, unsigned int line_number)
 {
 	stack_t *runner;
 
@@ -61,12 +61,12 @@ void _pint(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * _pop - remove element a list
+ * popfunc - remove element a list
  *@stack: pointer to first node
  *@line_number: integer
  *Return: void
  */
-void _pop(stack_t **stack, unsigned int line_number)
+void popfunc(stack_t **stack, unsigned int line_number)
 {
 	stack_t *nodo = *stack;
 
