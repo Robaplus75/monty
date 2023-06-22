@@ -62,9 +62,6 @@ instruct_func opfunc(char *strr)
 		{"pall", pallf},
 		{"pint", pintfunc},
 		{"pop", popfunc},
-		{"swap", swapfunc},
-		{"add", addfunc},
-		{"nop", nopfunc},
 		{NULL, NULL},
 	};
 /*checks for errors or if its null*/
