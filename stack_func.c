@@ -1,26 +1,35 @@
 #include "monty.h"
 /**
- * pushf - push int to a stack
- * @stack: linked lists for monty stack
- * @line_number: number of line opcode occurs on
+ * pushf - push to stack
+ * @filestack: the list or linked lsit
+ * @line_number: number of lines
  */
-void pushf(stack_t **filestack, __attribute__ ((unused))unsigned int line_number)
+void pushf(stack_t **filestack,
+__attribute__ ((unused))unsigned int line_number)
 {
-	stack_t *fileop;
 	(void)line_number;
+	stack_t *fileop;
 
+/*allocate space for fileop*/
 	fileop = malloc(sizeof(stack_t));
+
 	if (fileop == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-
+	else
+	{
+	}
+/*changing vlaues*/
 	fileop->n = var_global.push_arg;
 	fileop->next = *filestack;
+
 	fileop->prev = NULL;
+
 	if (*filestack != NULL)
 		(*filestack)->prev = fileop;
+/*set value for filestack*/
 	*filestack = fileop;
 }
 
