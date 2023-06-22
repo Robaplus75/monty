@@ -62,7 +62,7 @@ instruct_func opfunc(char *strr);
 
 /*Fuxntions Monty*/
 void pallf(stack_t **stack, unsigned int line_number);
-void pushf(stack_t **stack, unsigned int line_number);
+void pushf(stack_t **filestack, unsigned int line_number);
 void pintfunc(stack_t **stack, unsigned int line_number);
 void popfunc(stack_t **stack, unsigned int line_number);
 void swapfunc(stack_t **stack, unsigned int line_number);
